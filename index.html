@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 21st Birthday! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #750b0b;
+      --bg2: #3d0404;
+      --gold: #f5c842;
+      --gold2: #e8a800;
+      --cream: #fff8ee;
+      --rose: #ff6b9d;
+      --text: #fff8ee;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 60% 30%, #a01010 0%, #750b0b 40%, #3d0404 100%);
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ─── STARS ─── */
+    #stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--td) ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.1; transform: scale(0.8); }
+      to   { opacity: 0.9; transform: scale(1.2); }
+    }
+
+    /* ─── BALLOONS ─── */
+    #balloons {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: floatUp linear infinite;
+    }
+    .balloon-string {
+      width: 1.5px;
+      height: 50px;
+      background: rgba(255,255,255,0.4);
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0)      translateX(0)    rotate(0deg);  opacity: 0.9; }
+      20%  { transform: translateY(-20vh)  translateX(18px) rotate(4deg);  opacity: 0.9; }
+      50%  { transform: translateY(-50vh)  translateX(-15px) rotate(-5deg); opacity: 0.8; }
+      80%  { transform: translateY(-80vh)  translateX(12px) rotate(3deg);  opacity: 0.5; }
+      100% { transform: translateY(-110vh) translateX(-8px) rotate(-3deg); opacity: 0;   }
+    }
+
+    /* ─── WRAPPER ─── */
+    #wrapper {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeDown 1s ease both;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(245,200,66,0.5), 0 2px 4px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+      animation: glowPulse 2.5s ease-in-out infinite;
+    }
+    header p {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: rgba(255,248,238,0.75);
+      margin-top: 8px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    @keyframes glowPulse {
+      0%,100% { text-shadow: 0 0 15px rgba(245,200,66,0.4), 0 2px 4px rgba(0,0,0,0.5); }
+      50%      { text-shadow: 0 0 35px rgba(245,200,66,0.9), 0 0 60px rgba(245,200,66,0.4), 0 2px 4px rgba(0,0,0,0.5); }
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    #content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* ─── CAKE SECTION ─── */
+    #cake-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeDown 1.4s ease both;
+    }
+    #candles-row {
+      display: flex;
+      gap: 5px;
+      margin-bottom: -1px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 280px;
+    }
+    .candle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .flame {
+      width: 9px;
+      height: 14px;
+      background: radial-gradient(ellipse at 50% 80%, #fff 10%, #ffee44 40%, #ff8800 80%, transparent 100%);
+      border-radius: 50% 50% 35% 35%;
+      animation: flicker var(--fd) ease-in-out infinite;
+      margin-bottom: 1px;
+      filter: drop-shadow(0 0 4px #ffaa00);
+    }
+    @keyframes flicker {
+      0%,100% { transform: scaleY(1)    scaleX(1);    opacity: 1;    }
+      25%      { transform: scaleY(1.2)  scaleX(0.85); opacity: 0.85; }
+      50%      { transform: scaleY(0.88) scaleX(1.1);  opacity: 0.95; }
+      75%      { transform: scaleY(1.15) scaleX(0.9);  opacity: 0.8;  }
+    }
+    .candle-body {
+      width: 9px;
+      height: 22px;
+      border-radius: 2px;
+      background: var(--cc);
+    }
+
+    /* ─── PARAGRAPH FRAME ─── */
+    #para-frame {
+      width: clamp(260px, 38vw, 380px);
+      min-height: 280px;
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+      box-shadow:
+        0 0 0 1px rgba(245,200,66,0.15),
+        inset 0 0 40px rgba(245,200,66,0.04),
+        0 8px 40px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: fadeDown 1.7s ease both;
+    }
+    #para-frame::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(245,200,66,0.2);
+      border-radius: 13px;
+      pointer-events: none;
+    }
+    /* corner ornaments */
+    #para-frame::after {
+      content: '✦';
+      position: absolute;
+      top: 12px; right: 16px;
+      color: var(--gold);
+      font-size: 18px;
+      opacity: 0.5;
+    }
+    .corner-ornament {
+      position: absolute;
+      color: var(--gold);
+      font-size: 18px;
+      opacity: 0.5;
+    }
+    .co-tl { top: 12px;    left: 16px;  }
+    .co-bl { bottom: 12px; left: 16px;  }
+    .co-br { bottom: 12px; right: 16px; }
+
+    #para-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-shadow: 0 0 12px rgba(245,200,66,0.4);
+    }
+    #para-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.8;
+      text-align: center;
+      padding: 30px 28px;
+      z-index: 1;
+    }
+
+    /* ─── MUSIC OVERLAY ─── */
+    #music-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #3d0404 0%, #1a0202 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+    #music-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #music-overlay-inner {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    #music-note {
+      font-size: 64px;
+      animation: noteBounce 1.4s ease-in-out infinite;
+    }
+    @keyframes noteBounce {
+      0%,100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-14px) scale(1.1); }
+    }
+    #music-overlay-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      opacity: 0.85;
+      letter-spacing: 1px;
+    }
+    #music-play-btn {
+      padding: 14px 42px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: #3d0404;
+      border: none;
+      border-radius: 35px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 24px rgba(245,200,66,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    #music-play-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(245,200,66,0.7);
+    }
+    #music-indicator {
+      position: fixed;
+      bottom: 18px;
+      right: 20px;
+      color: rgba(245,200,66,0.5);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .music-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+      animation: musicPulse 1.2s ease-in-out infinite;
+    }
+    .music-dot:nth-child(2) { animation-delay: 0.2s; }
+    .music-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes musicPulse {
+      0%,100% { transform: scaleY(1);   opacity: 0.4; }
+      50%      { transform: scaleY(1.8); opacity: 1;   }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      margin-top: 50px;
+      color: rgba(255,248,238,0.3);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeDown 2.2s ease both;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Music play overlay -->
+<div id="music-overlay">
+  <div id="music-overlay-inner">
+    <div id="music-note">🎵</div>
+    <p id="music-overlay-title">Tap to start the experience</p>
+    <button id="music-play-btn" onclick="startExperience()">▶ Play & Enter</button>
+  </div>
+</div>
+
+<!-- Local background music — put your mp3 in the same folder as this file -->
+<audio id="bg-music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div id="stars"></div>
+<div id="balloons"></div>
+
+<div id="wrapper">
+  <header>
+    <h1>🎉 Happy 21st Birthday! 🎉</h1>
+    <p>Celebrating a very special day</p>
+  </header>
+
+  <div id="content">
+    <!-- CAKE -->
+    <div id="cake-section">
+      <svg id="cake-svg" width="300" height="260" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- ══ LAYER 1 TOP — 3 candles ══ -->
+        <!-- candle flames layer1 -->
+        <ellipse cx="110" cy="6" rx="5" ry="7" fill="url(#flame)" class="fl"><animate attributeName="ry" values="7;9;6;8;7" dur="0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.8;1;0.85;1" dur="0.35s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="150" cy="5" rx="5" ry="7" fill="url(#flame)" class="fl"><animate attributeName="ry" values="7;6;9;7;6;8;7" dur="0.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.85;1;0.8;1" dur="0.3s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="190" cy="6" rx="5" ry="7" fill="url(#flame)" class="fl"><animate attributeName="ry" values="7;8;6;9;7" dur="0.45s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.9;0.8;1;0.85;1" dur="0.38s" repeatCount="indefinite"/></ellipse>
+        <!-- candle bodies layer1 -->
+        <rect x="107" y="13" width="7" height="20" rx="2" fill="#f5c842"/>
+        <rect x="147" y="13" width="7" height="20" rx="2" fill="#ff6b9d"/>
+        <rect x="187" y="13" width="7" height="20" rx="2" fill="#74c0fc"/>
+        <!-- layer 1 cake -->
+        <rect x="85"  y="33" width="130" height="38" rx="7" fill="#8B1A1A"/>
+        <rect x="85"  y="33" width="130" height="14" rx="7" fill="#b02222"/>
+        <rect x="85"  y="65" width="130" height="6"  rx="3" fill="#f5c842"/>
+        <!-- drips -->
+        <path d="M100 47 Q102 57 100 63" stroke="#5a0e0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M122 43 Q124 55 122 63" stroke="#5a0e0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M145 47 Q147 57 145 63" stroke="#5a0e0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M168 43 Q170 55 168 63" stroke="#5a0e0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M190 47 Q192 57 190 63" stroke="#5a0e0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- dots -->
+        <circle cx="108" cy="56" r="4" fill="#f5c842" opacity="0.85"/>
+        <circle cx="133" cy="51" r="3" fill="#ff6b9d" opacity="0.9"/>
+        <circle cx="158" cy="56" r="4" fill="#f5c842" opacity="0.85"/>
+        <circle cx="183" cy="51" r="3" fill="#ff6b9d" opacity="0.9"/>
+
+        <!-- ══ LAYER 2 MIDDLE — 7 candles ══ -->
+        <!-- flames layer2 -->
+        <ellipse cx="72"  cy="77" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;5;7;6" dur="0.42s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="97"  cy="76" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;8;6;7;6" dur="0.36s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="122" cy="77" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;8;6" dur="0.48s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="150" cy="76" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;6;5;7;6" dur="0.39s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="178" cy="77" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;7;8;6" dur="0.44s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="203" cy="76" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;6;8;6" dur="0.33s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="228" cy="77" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;7;5;6" dur="0.46s" repeatCount="indefinite"/></ellipse>
+        <!-- bodies layer2 -->
+        <rect x="69"  y="83" width="6" height="17" rx="2" fill="#b197fc"/>
+        <rect x="94"  y="83" width="6" height="17" rx="2" fill="#f5c842"/>
+        <rect x="119" y="83" width="6" height="17" rx="2" fill="#63e6be"/>
+        <rect x="147" y="83" width="6" height="17" rx="2" fill="#ff922b"/>
+        <rect x="175" y="83" width="6" height="17" rx="2" fill="#ff6b9d"/>
+        <rect x="200" y="83" width="6" height="17" rx="2" fill="#74c0fc"/>
+        <rect x="225" y="83" width="6" height="17" rx="2" fill="#f5c842"/>
+        <!-- layer 2 cake -->
+        <rect x="55"  y="100" width="190" height="44" rx="7" fill="#6b1212"/>
+        <rect x="55"  y="100" width="190" height="16" rx="7" fill="#8b1a1a"/>
+        <rect x="55"  y="138" width="190" height="6"  rx="3" fill="#f5c842"/>
+        <!-- drips -->
+        <path d="M72  116 Q74 126 72  136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M97  112 Q99 124 97  136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M122 116 Q124 128 122 136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M150 112 Q152 124 150 136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M178 116 Q180 128 178 136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M203 112 Q205 124 203 136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M228 116 Q230 126 228 136" stroke="#3d0404" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- hearts -->
+        <text x="87"  y="130" font-size="13" text-anchor="middle" fill="#f5c842">♥</text>
+        <text x="115" y="125" font-size="13" text-anchor="middle" fill="#ff6b9d">♥</text>
+        <text x="143" y="130" font-size="13" text-anchor="middle" fill="#f5c842">♥</text>
+        <text x="171" y="125" font-size="13" text-anchor="middle" fill="#ff6b9d">♥</text>
+        <text x="200" y="130" font-size="13" text-anchor="middle" fill="#f5c842">♥</text>
+
+        <!-- ══ LAYER 3 BOTTOM — 11 candles ══ -->
+        <!-- flames layer3 -->
+        <ellipse cx="33"  cy="151" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;8;6" dur="0.41s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="55"  cy="150" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;6;5;7;6" dur="0.37s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="77"  cy="151" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;8;7;6" dur="0.49s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="100" cy="150" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;6;8;6" dur="0.35s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="122" cy="151" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;5;7;6" dur="0.43s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="150" cy="150" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;7;8;6;7;6" dur="0.5s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="178" cy="151" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;8;5;6" dur="0.38s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="200" cy="150" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;8;7;6" dur="0.46s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="222" cy="151" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;6;5;7;6" dur="0.4s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="245" cy="150" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;8;6" dur="0.34s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="267" cy="151" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;7;6;8;6" dur="0.47s" repeatCount="indefinite"/></ellipse>
+        <!-- bodies layer3 -->
+        <rect x="30"  y="157" width="6" height="17" rx="2" fill="#ff6b9d"/>
+        <rect x="52"  y="157" width="6" height="17" rx="2" fill="#f5c842"/>
+        <rect x="74"  y="157" width="6" height="17" rx="2" fill="#74c0fc"/>
+        <rect x="97"  y="157" width="6" height="17" rx="2" fill="#b197fc"/>
+        <rect x="119" y="157" width="6" height="17" rx="2" fill="#63e6be"/>
+        <rect x="147" y="157" width="6" height="17" rx="2" fill="#f5c842"/>
+        <rect x="175" y="157" width="6" height="17" rx="2" fill="#ff922b"/>
+        <rect x="197" y="157" width="6" height="17" rx="2" fill="#ff6b9d"/>
+        <rect x="219" y="157" width="6" height="17" rx="2" fill="#74c0fc"/>
+        <rect x="242" y="157" width="6" height="17" rx="2" fill="#f5c842"/>
+        <rect x="264" y="157" width="6" height="17" rx="2" fill="#b197fc"/>
+        <!-- layer 3 cake -->
+        <rect x="15"  y="174" width="270" height="56" rx="8" fill="#4a0d0d"/>
+        <rect x="15"  y="174" width="270" height="20" rx="8" fill="#6b1212"/>
+        <rect x="15"  y="224" width="270" height="6"  rx="3" fill="#f5c842"/>
+        <!-- "21" -->
+        <text x="150" y="212" font-size="24" font-weight="700" text-anchor="middle"
+              fill="#f5c842" font-family="Playfair Display, serif">21</text>
+        <!-- stars -->
+        <text x="50"  y="210" font-size="14" text-anchor="middle" fill="#f5c842">★</text>
+        <text x="250" y="210" font-size="14" text-anchor="middle" fill="#f5c842">★</text>
+        <text x="80"  y="203" font-size="10" text-anchor="middle" fill="#ff6b9d">✦</text>
+        <text x="220" y="203" font-size="10" text-anchor="middle" fill="#ff6b9d">✦</text>
+
+        <!-- plate shadow -->
+        <ellipse cx="150" cy="236" rx="140" ry="9" fill="rgba(0,0,0,0.3)"/>
+
+        <!-- gradient defs -->
+        <defs>
+          <radialGradient id="flame" cx="50%" cy="80%" r="60%">
+            <stop offset="0%"   stop-color="#ffffff"/>
+            <stop offset="30%"  stop-color="#ffee44"/>
+            <stop offset="70%"  stop-color="#ff8800"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- PARAGRAPH FRAME -->
+    <div id="para-frame">
+      <span class="corner-ornament co-tl">✦</span>
+      <span class="corner-ornament co-bl">✦</span>
+      <span class="corner-ornament co-br">✦</span>
+      <p id="para-text">
+        <span id="para-title">Happy Birthday Safa</span><br><br>
+        ngl it's kinda crazy that you're 21 now, I've only known you for less than a year but somehow it feels like you've always been there —
+        being the funny baldheaded demon you are<br><br>
+        I truly hope this year and every other year is graceful to you, full of happiness,
+        good memories and less stress, and everything you've been wanting for yourself.
+      </p>
+    </div>
+  </div>
+
+  <div id="music-indicator">
+    <div class="music-dot"></div>
+    <div class="music-dot"></div>
+    <div class="music-dot"></div>
+    🎵
+  </div>
+
+  <footer>Made with ❤️ for a special birthday</footer>
+</div>
+
+<script>
+  /* ── STARS ── */
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 1 + Math.random() * 2.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%; left:${Math.random()*100}%;
+      --td:${1.5 + Math.random()*3}s;
+    `;
+    starsEl.appendChild(s);
+  }
+
+  /* ── BALLOONS ── */
+  const balloonColors = [
+    ['#ff4d6d','#ff85a1'],['#f5c842','#ffe585'],['#74c0fc','#a9d8ff'],
+    ['#b197fc','#d4c5ff'],['#63e6be','#a8f0da'],['#ff922b','#ffba80'],
+    ['#f783ac','#ffb8d4'],['#fff8ee','#fff'],  ['#ff6b9d','#ffaacb']
+  ];
+
+  // raccoon expressions: eyes open, wink, happy
+  const raccoonFaces = [
+    // eyes open, little smile
+    `<circle cx="15" cy="26" r="2" fill="#1a1a1a"/>
+     <circle cx="27" cy="26" r="2" fill="#1a1a1a"/>
+     <circle cx="16" cy="25.2" r="0.7" fill="#fff"/>
+     <circle cx="28" cy="25.2" r="0.7" fill="#fff"/>
+     <path d="M17 30 Q21 33 25 30" stroke="#1a1a1a" stroke-width="1.2" fill="none" stroke-linecap="round"/>`,
+    // wink + open smile
+    `<path d="M13 26 Q15 24 17 26" stroke="#1a1a1a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+     <circle cx="27" cy="26" r="2" fill="#1a1a1a"/>
+     <circle cx="28" cy="25.2" r="0.7" fill="#fff"/>
+     <path d="M17 30 Q21 34 25 30" stroke="#1a1a1a" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
+    // happy squint eyes
+    `<path d="M13 27 Q15 24.5 17 27" stroke="#1a1a1a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+     <path d="M25 27 Q27 24.5 29 27" stroke="#1a1a1a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+     <path d="M16 30.5 Q21 34.5 26 30.5" stroke="#1a1a1a" stroke-width="1.2" fill="none" stroke-linecap="round"/>`,
+  ];
+
+  function makeBalloonSVG(fill, hi) {
+    return `<svg width="42" height="54" viewBox="0 0 42 54">
+      <ellipse cx="21" cy="24" rx="18" ry="21" fill="${fill}"/>
+      <ellipse cx="14" cy="15" rx="6" ry="5" fill="${hi}" opacity="0.5"/>
+      <path d="M21 45 Q19 50 21 54 Q23 50 21 45" fill="${fill}"/>
+      <polygon points="21,45 17.5,49 24.5,49" fill="${fill}"/>
+    </svg>`;
+  }
+
+  function makeRaccoonSVG(fill, hi, faceIdx) {
+    const face = raccoonFaces[faceIdx % raccoonFaces.length];
+    return `<svg width="52" height="110" viewBox="0 0 52 110">
+      <!-- balloon -->
+      <ellipse cx="26" cy="22" rx="18" ry="20" fill="${fill}"/>
+      <ellipse cx="19" cy="14" rx="6" ry="5" fill="${hi}" opacity="0.45"/>
+      <path d="M26 42 Q24 46 26 50 Q28 46 26 42" fill="${fill}"/>
+      <polygon points="26,42 22.5,46 29.5,46" fill="${fill}"/>
+      <!-- string from balloon to paw -->
+      <line x1="26" y1="50" x2="26" y2="62" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+
+      <!-- raccoon body -->
+      <!-- tail -->
+      <path d="M34 100 Q46 96 44 86 Q42 76 36 80" stroke="#888" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M34 100 Q46 96 44 86 Q42 76 36 80" stroke="#ddd" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="4 3"/>
+      <!-- body -->
+      <ellipse cx="26" cy="90" rx="10" ry="13" fill="#9e9e9e"/>
+      <ellipse cx="26" cy="93" rx="6.5" ry="8" fill="#d6d6d6"/>
+      <!-- left arm raised holding string -->
+      <path d="M16 82 Q10 72 18 64" stroke="#9e9e9e" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M18 64 Q22 60 26 62" stroke="#9e9e9e" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- right arm -->
+      <path d="M36 82 Q43 79 41 90" stroke="#9e9e9e" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- legs -->
+      <ellipse cx="20" cy="103" rx="5" ry="6" fill="#9e9e9e"/>
+      <ellipse cx="32" cy="104" rx="5" ry="6" fill="#9e9e9e"/>
+      <!-- feet -->
+      <ellipse cx="19" cy="108" rx="6" ry="3.5" fill="#777"/>
+      <ellipse cx="33" cy="109" rx="6" ry="3.5" fill="#777"/>
+
+      <!-- head -->
+      <ellipse cx="26" cy="72" rx="11" ry="10" fill="#b0b0b0"/>
+      <!-- face mask -->
+      <ellipse cx="26" cy="74" rx="8" ry="6.5" fill="#e8e8e8"/>
+      <!-- eye masks -->
+      <ellipse cx="15" cy="71" rx="5.5" ry="4.5" fill="#555" opacity="0.8"/>
+      <ellipse cx="37" cy="71" rx="5.5" ry="4.5" fill="#555" opacity="0.8"/>
+      <!-- ears -->
+      <ellipse cx="16" cy="63" rx="5" ry="5.5" fill="#b0b0b0"/>
+      <ellipse cx="36" cy="63" rx="5" ry="5.5" fill="#b0b0b0"/>
+      <ellipse cx="16" cy="63" rx="2.8" ry="3" fill="#d4a0a0" opacity="0.6"/>
+      <ellipse cx="36" cy="63" rx="2.8" ry="3" fill="#d4a0a0" opacity="0.6"/>
+      <!-- nose -->
+      <ellipse cx="26" cy="76" rx="2.5" ry="1.8" fill="#555"/>
+      <!-- face -->
+      ${face}
+      <!-- cheek blush -->
+      <ellipse cx="13" cy="29" rx="3" ry="2" fill="#ffaaaa" opacity="0.4"/>
+      <ellipse cx="33" cy="29" rx="3" ry="2" fill="#ffaaaa" opacity="0.4"/>
+    </svg>`;
+  }
+
+  const balloonContainer = document.getElementById('balloons');
+  // indices that will have raccoons (roughly every 3rd balloon)
+  const raccoonIndices = new Set([2, 5, 8, 11, 15, 19, 22]);
+
+  for (let i = 0; i < 24; i++) {
+    const [fill, hi] = balloonColors[i % balloonColors.length];
+    const b = document.createElement('div');
+    b.className = 'balloon';
+    const left = 2 + Math.random() * 92;
+    const dur  = 7 + Math.random() * 9;
+    const del  = -(Math.random() * dur);
+    b.style.cssText = `left:${left}%; animation-duration:${dur}s; animation-delay:${del}s;`;
+
+    if (raccoonIndices.has(i)) {
+      b.innerHTML = makeRaccoonSVG(fill, hi, i % 3);
+    } else {
+      b.innerHTML = makeBalloonSVG(fill, hi) + '<div class="balloon-string"></div>';
+    }
+    balloonContainer.appendChild(b);
+  }
+
+  /* ── MUSIC: local audio file ── */
+  function startExperience() {
+    const overlay = document.getElementById('music-overlay');
+    overlay.classList.add('hidden');
+    setTimeout(() => overlay.style.display = 'none', 900);
+
+    const audio = document.getElementById('bg-music');
+    audio.volume = 0.8;
+    audio.play();
+  }
+
+  /* candles are now drawn inside the SVG layers */
+  /* music is handled by the YouTube embed above */
+</script>
+</body>
+</html>
